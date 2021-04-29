@@ -3,9 +3,10 @@ function route(pathname, handel, res) {
     if (typeof handel[pathname] === 'function') {
         handel[pathname](res);
     } else {
-        console.log('404 Not Found');
+        console.log('No handler for' + pathname);
+        let body = '404 Not Found';
         res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.write(sBody);
+        res.write(body);
         res.end();
     }
 }
