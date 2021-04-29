@@ -10,7 +10,7 @@ function start(route) {
         let sBody = 'Hello, world! <br> I am in the cloud class.';
 
         console.log('Request receive.');
-        pathname = url.URL(req.url, baseUrl).pathname;
+        pathname = new url.URL(req.url, baseUrl).pathname;
         route(pathname);
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.write(sBody);
