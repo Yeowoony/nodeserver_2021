@@ -1,18 +1,24 @@
 const http = require('http');
+const url = require('url');
 
 const hostname = 'localhost';
 const port = 8000;
-const baseUrl = 'http://' + hostname + ':' + 8000;
+const baseUrl = 'http://' + hostname + ':' + port;
 
-function start() {
+function start(route) {
     function onRequest(req, res) {
+        let sBoy = 'Hello, world! <br> I am in the cloud class.';
+
+        console.log('Request receive.');
+        pathname = url.URL(req.url, baseUrl).pathname;
+        route(pathname);
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write('Hello, world!');
+        res.write(sBody);
         res.end();
     }
 
     server = http.createServer(onRequest);
-    server.listen(8000, 'localhost');
+    server.listen(prot, hostname);
     console.log('Server is running at ' + baseUrl);
 }
 
