@@ -1,4 +1,4 @@
 const myServer = require('./MyServer');
-const myServer = require('./MyRouter');
+const myRouter = require('./MyRouter');
 
 myServer.start(myRouter.route);
