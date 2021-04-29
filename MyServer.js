@@ -10,9 +10,6 @@ function start(route, handle) {
         console.log('Request receive.');
         pathname = new url.URL(req.url, baseUrl).pathname;
         route(pathname, handle, res);
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(sBody);
-        res.end();
     }
 
     server = http.createServer(onRequest);
