@@ -1,14 +1,14 @@
 const fs = require('fs');
 const myHandler = require('./MyHandler');
 
-function route(pathname, handel, res) {
+function route(pathname, handle, res, postData) {
     console.log('Routing request for ' + pathname);
-    if (typeof handel[pathname] === 'function') {
-        handel[pathname](res);
+    if (typeof handle[pathname] === 'function') {
+        handle[pathname](res, postData);
     } else {
         pathFile = '.' + pathname + '.html'; // ex) ./page.html
         if (fs.existsSync(pathFile)) {
-            console.log(pathFile + 'is found.');
+            console.log(pathFile + ' is found.');
             myHandler.htmlFile(res, pathFile);
         } else {
             console.log('No handler for ' + pathname);
@@ -19,3 +19,5 @@ function route(pathname, handel, res) {
         }
     }
 }
+
+exports.route = route;
